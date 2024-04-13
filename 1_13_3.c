@@ -23,19 +23,19 @@ int main ()
     {
         
         if (c != ' ')
-            {
-                word = IN;
-                ++char_count;
-            }
+        {
+            word = IN;
+            ++char_count;
+        }
         /*new word to be starting (state IN, but blank space identified)*/
         else if (word == IN)
-            {
-                for (i = 0; i < char_count; ++i)
-                    ++word_pos_count[i];
+        {
+            for (i = 0; i < char_count; ++i)
+                ++word_pos_count[i];
 
-                word = OUT;
-                char_count = 0;
-            }   
+            word = OUT;
+            char_count = 0;
+        }   
         
     }
 
@@ -47,33 +47,38 @@ int main ()
     char_count = 0;
 
     for (i = 0; i < MAX_LEN_WORD; ++i)
-        {
-            if (word_pos_count[i] != 0)
-                ++char_count;
-        }
-        /*printf ("%d\n", word_pos_count[i]); - legacy thing that worked*/
+    {
+        if (word_pos_count[i] != 0)
+            ++char_count;
+    }
+        /*printf ("%d\n", word_pos_count[i]); - legacy thing that worked*
+    
+    while (word_pos_count[i] != 0)
+        ++char_count.
 
 
-    /*creates biggest possible histogram array, considering lengthiest word*/
-    while (j != char_count)
+    /*creates correct histogram array, considering number of first letters and the lengthiest word*/
+    while (j != word_pos_count[0])
     {
         for (i = 0; i < char_count; ++i)
         {
-            /* find a way to make the array only print according to the the word pos count. This doesn't work currently*/
-            if (word_pos_count[i] < char_count)
-            {
-                putchar ('c');
-                putchar (' ');
-            }    
+            putchar ('[');
+            putchar (' ');
+            putchar (']');
+            putchar (' ');        
         }
 
         putchar ('\n');
         ++j;
     }
 
+    /* legacy footer description of histogram*/
+    /*printf (" 1   2   3   4   5   6   7   8");*/
+
 
 }
 
 
-/* next up: finish the vertical line visualization*/
+/* next up: finish the vertical line visualization - done at 16:19, 13/04/24*/
+/* next up: remove block if number is void in char_pos_count[x] */
 
